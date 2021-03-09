@@ -16,15 +16,15 @@ namespace Hands.Of.Jarvis.DAO
             this.SqliteDatabaseFile = SqliteDatabaseFile;
         }
 
-        public async Task ExecuteNonQuery(string Sql)
+        public async Task<int> ExecuteNonQuery(string Sql)
         {
-            using (var connection = new SqliteConnection(SqliteDatabaseFile))
+            using (var connection = new SqliteConnection($@"Data Source = {SqliteDatabaseFile}"))
             {
                 await connection.OpenAsync();
 
                 var command = connection.CreateCommand();
                 command.CommandText = Sql;
-                await command.ExecuteNonQueryAsync();
+                return await command.ExecuteNonQueryAsync();
             }
         }
 
