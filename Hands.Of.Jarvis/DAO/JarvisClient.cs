@@ -6,12 +6,12 @@ using Microsoft.Data.Sqlite;
 
 namespace Hands.Of.Jarvis.DAO
 {
-    public class BaseSQLLiteClient
+    public class JarvisClient
     {
 
         private string SqliteDatabaseFile;
 
-        public BaseSQLLiteClient(string SqliteDatabaseFile)
+        public JarvisClient(string SqliteDatabaseFile)
         {
             this.SqliteDatabaseFile = SqliteDatabaseFile;
         }
@@ -57,10 +57,10 @@ namespace Hands.Of.Jarvis.DAO
                         T result = new T();
                         for (int i = 0; i < r.FieldCount; i++)
                         {
-                            Type fieldType = r.GetFieldType(i);
-                            var mi = typeof(SqliteDataReader).GetMethod("GetFieldValue");
-                            var fooRef = mi.MakeGenericMethod(fieldType);
-                            result[r.GetName(i)] = fooRef.Invoke(r, new object[] { i });
+                            var getFieldValue = typeof(SqliteDataReader)
+                                            .GetMethod("GetFieldValue")
+                                            .MakeGenericMethod(r.GetFieldType(i));
+                            result[r.GetName(i)] = getFieldValue.Invoke(r, new object[] { i });
                         }
                         results.Add(result);
                     }

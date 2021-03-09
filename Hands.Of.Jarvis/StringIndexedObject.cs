@@ -9,9 +9,9 @@ namespace Hands.Of.Jarvis.Objects
         {
             get
             {
-                Type myType = this.GetType();
-                PropertyInfo myPropInfo = myType.GetProperty(propertyName);
-                return myPropInfo.GetValue(this, null);
+                return GetType()
+                        .GetProperty(propertyName)
+                        .GetValue(this, null);
             }
             set
             {
