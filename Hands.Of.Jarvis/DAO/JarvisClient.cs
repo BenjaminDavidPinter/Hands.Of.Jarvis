@@ -39,8 +39,6 @@ namespace Hands.Of.Jarvis.DAO
                 command.CommandText = Sql;
                 return command.ExecuteScalar();
             }
-
-            return new object();
         }
 
         public async Task<List<T>> ExecuteRead<T>(string query) where T : StringIndexedObject, new()
