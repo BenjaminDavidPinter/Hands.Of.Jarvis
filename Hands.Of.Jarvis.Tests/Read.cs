@@ -16,8 +16,6 @@ namespace Hands.Of.Jarvis.Tests
         {
             cli = new JarvisClient(Configurations.TestDbLocation);
 
-            cli = new JarvisClient(Configurations.TestDbLocation);
-
             //Because this is highly dependant on checking string validity, we're going to go ahead and truncate the test table here
             cli.ExecuteNonQuery("delete from ScalarTester").GetAwaiter().GetResult();
 
