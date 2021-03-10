@@ -13,7 +13,7 @@ namespace Hands.Of.Jarvis.Tests
         [SetUp]
         public void SetUp()
         {
-            cli = new JarvisClient("../../../TestDb/TestDb.db");
+            cli = new JarvisClient(Configurations.TestDbLocation);
         }
 
         [Test, Order(1)]

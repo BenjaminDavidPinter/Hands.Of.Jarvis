@@ -1,10 +1,8 @@
 ﻿using System;
 namespace Hands.Of.Jarvis.Tests
 {
-    public class Configurations
+    public static class Configurations
     {
-        public Configurations()
-        {
-        }
+        public static readonly string TestDbLocation = "../../../TestDb/TestDb.db";
     }
 }

@@ -28,16 +28,17 @@ namespace Hands.Of.Jarvis.DAO
             }
         }
 
-        public async Task<object> ExecuteScalar(string Sql)
+        public async Task<T> ExecuteScalar<T>(string Sql)
         {
             
-            using (var connection = new SqliteConnection(SqliteDatabaseFile))
+            using (var connection = new SqliteConnection($@"Data Source = {SqliteDatabaseFile}"))
             {
                 await connection.OpenAsync();
 
                 var command = connection.CreateCommand();
                 command.CommandText = Sql;
-                return command.ExecuteScalar();
+                return (T)command.ExecuteScalar();
+                
             }
         }
 
