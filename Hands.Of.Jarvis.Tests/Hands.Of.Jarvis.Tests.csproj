@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="TestDb\" />
+    <Folder Include="TestModels\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hands.Of.Jarvis\Hands.Of.Jarvis.csproj" />

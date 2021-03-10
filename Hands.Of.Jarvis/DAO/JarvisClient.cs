@@ -46,7 +46,7 @@ namespace Hands.Of.Jarvis.DAO
         {
             List<T> results = new List<T>();
 
-            using (var connection = new SqliteConnection(SqliteDatabaseFile))
+            using (var connection = new SqliteConnection($@"Data Source = {SqliteDatabaseFile}"))
             {
                 await connection.OpenAsync();
                 var command = connection.CreateCommand();
