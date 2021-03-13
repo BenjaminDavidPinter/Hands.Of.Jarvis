@@ -1,6 +1,8 @@
 ﻿# Hands of Jarvis
 A simple ORM for Sqlite.
 
+[![.NET](https://github.com/BenjaminDavidPinter/Hands.Of.Jarvis/actions/workflows/dotnet.yml/badge.svg)](https://github.com/BenjaminDavidPinter/Hands.Of.Jarvis/actions/workflows/dotnet.yml)
+
 ### Author: Benjamin Pinter
 ### Date: January 2021
 
