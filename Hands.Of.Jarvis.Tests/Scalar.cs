@@ -42,8 +42,8 @@ namespace Hands.Of.Jarvis.Tests
         [Test, Order(3)]
         public async Task SC_Returns_Date()
         {
-            var ScalarDateResult = await cli.ExecuteScalar<string>("select DateColumn from ScalarTester limit 1");
-            Assert.IsTrue((DateTime.Parse("1/1/2021") - DateTime.Parse(ScalarDateResult)).Seconds == 0);
+            var ScalarDateResult = await cli.ExecuteScalar<DateTime>("select DateColumn from ScalarTester limit 1");
+            Assert.AreEqual(ScalarDateResult, DateTime.Parse("1/1/2021"));
         }
 
         [Test, Order(4)]

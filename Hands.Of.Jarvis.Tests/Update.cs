@@ -27,7 +27,7 @@ namespace Hands.Of.Jarvis.Tests
         }
 
         [Test, Order(1)]
-        public async Task SimpleObjectUpdate()
+        public async Task UP_Check_Impacted_Rows()
         {
             var testClass = await cli.Read<TestClass>("Select ScalarColumn, TextColumn, IntegerColumn, DateColumn, FloatColumn from TestClass Limit 1");
 
@@ -43,7 +43,7 @@ namespace Hands.Of.Jarvis.Tests
         }
 
         [Test, Order(2)]
-        public async Task CheckUpdateCorrectness()
+        public async Task UP_Check_Update_Single_Object()
         {
             var testClass = await cli.Read<TestClass>("Select ScalarColumn, TextColumn, IntegerColumn, DateColumn, FloatColumn from TestClass Limit 1");
 
