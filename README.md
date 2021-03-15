@@ -12,7 +12,7 @@ A simple ORM for Sqlite.
 - [x] Execute Non Query Passthrough Methods
 - [x] Scalar Passthrough Methods
 - [x] Simple Flat Object Read
-- [ ] Simple Flat Object Update
+- [X] Simple Flat Object Update
 - [ ] Simple Flat Object Delete
 - [ ] Transaction Support
 
