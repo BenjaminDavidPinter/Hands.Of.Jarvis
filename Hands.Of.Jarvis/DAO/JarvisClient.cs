@@ -41,6 +41,11 @@ namespace Hands.Of.Jarvis.DAO
 
                 var command = connection.CreateCommand();
                 command.CommandText = Sql;
+                if(typeof(T) == typeof(DateTime))
+                {
+                    var result = (string)command.ExecuteScalar();
+                    return (T)(Object)DateTime.Parse(result);
+                }
                 return (T)command.ExecuteScalar();
                 
             }
