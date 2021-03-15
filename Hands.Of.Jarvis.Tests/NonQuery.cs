@@ -10,8 +10,7 @@ namespace Hands.Of.Jarvis.Tests
     {
         JarvisClient cli;
 
-        [SetUp]
-        public void SetUp()
+        public NonQuery()
         {
             cli = new JarvisClient(Configurations.TestDbLocation);
         }

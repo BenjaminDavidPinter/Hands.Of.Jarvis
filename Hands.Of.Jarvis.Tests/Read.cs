@@ -11,8 +11,7 @@ namespace Hands.Of.Jarvis.Tests
     {
         JarvisClient cli;
 
-        [SetUp]
-        public void SetUp()
+        public Read()
         {
             cli = new JarvisClient(Configurations.TestDbLocation);
 
@@ -28,7 +27,7 @@ namespace Hands.Of.Jarvis.Tests
         [Test, Order(1)]
         public async Task RD_SingleRecord()
         {
-            var basicReadResult = await cli.ExecuteRead<TestClass>("SELECT TextColumn, IntegerColumn, DateColumn, FloatColumn from ScalarTester limit 1");
+            var basicReadResult = await cli.Read<TestClass>("SELECT TextColumn, IntegerColumn, DateColumn, FloatColumn from ScalarTester limit 1");
             Assert.IsTrue(
                 basicReadResult.Count() == 1
                 && basicReadResult.First().TextColumn == "testData"
@@ -42,7 +41,7 @@ namespace Hands.Of.Jarvis.Tests
         [Test, Order(1)]
         public async Task RD_MultiRecord()
         {
-            var basicReadResult = await cli.ExecuteRead<TestClass>("SELECT TextColumn, IntegerColumn, DateColumn, FloatColumn from ScalarTester order by IntegerColumn ASC limit 2");
+            var basicReadResult = await cli.Read<TestClass>("SELECT TextColumn, IntegerColumn, DateColumn, FloatColumn from ScalarTester order by IntegerColumn ASC limit 2");
             Assert.IsTrue(
                 basicReadResult.Count() == 2
                 && basicReadResult.First().TextColumn == "testData"
