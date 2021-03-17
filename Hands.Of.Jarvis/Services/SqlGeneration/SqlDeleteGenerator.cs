@@ -10,6 +10,11 @@ namespace Hands.Of.Jarvis.Services.SqlGeneration
     {
         public override string GenerateSql(IEnumerable<KeyValuePair<string, object>> Parameters, IEnumerable<KeyValuePair<string, object>> Keys, string TableName)
         {
+            if(Keys.Count() == 0)
+            {
+                throw new InvalidDataException("Not enough keys were provided to perform an update.");
+            }
+
             StringBuilder query = new StringBuilder();
             query.Append($"DELETE FROM {TableName} ");
 
@@ -26,13 +31,13 @@ namespace Hands.Of.Jarvis.Services.SqlGeneration
                 string wrapQuote = ((valueType == typeof(String))
                     || (valueType == typeof(DateTime)) ? "'" : ""); //I'll support it, but you better not be using dates as keys
 
-                query.Append($"{item.Key} = {wrapQuote}{item.Value}{wrapQuote} AND");
+                query.Append($"{item.Key} = {wrapQuote}{item.Value}{wrapQuote} AND ");
             }
 
 
             //TODO: May be a cleaner way to do this?
             //Do not need to add the final comma above
-            return String.Join("", query.ToString().Take(query.ToString().Length - 3)).Trim();
+            return String.Join("", query.ToString().Take(query.ToString().Length - 4)).Trim();
         }
     }
 }
