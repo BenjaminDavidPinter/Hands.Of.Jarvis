@@ -6,7 +6,7 @@ using Hands.Of.Jarvis.Attributes;
 
 namespace Hands.Of.Jarvis.Services.SqlGeneration
 {
-    public class BaseSqlGenerator
+    public abstract class BaseSqlGenerator: ISqlGenerator
     {
         public IEnumerable<KeyValuePair<string, object>> GetParamsForObject<T>(T Obj)
         {
@@ -32,5 +32,17 @@ namespace Hands.Of.Jarvis.Services.SqlGeneration
         {
             return typeof(T).Name;
         }
+
+        public string Generate<T>(T obj)
+        {
+            return GenerateSql(GetParamsForObject(obj), GetKeysForObject(obj), GetTableNameForObject(obj));
+        }
+
+        public string Generate<T>(T obj, Func<T, IEnumerable<KeyValuePair<string, object>>> byKey)
+        {
+            return GenerateSql(GetParamsForObject(obj), byKey(obj), GetTableNameForObject(obj));
+        }
+
+        public abstract string GenerateSql(IEnumerable<KeyValuePair<string, object>> Parameters, IEnumerable<KeyValuePair<string, object>> Keys, string TableName);
     }
 }

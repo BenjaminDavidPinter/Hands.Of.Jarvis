@@ -83,6 +83,7 @@ namespace Hands.Of.Jarvis.DAO
             return results;
         }
 
+
         public async Task<int> Update<T>(T obj)
         {
             return await this.ExecuteNonQuery(SqlUpdateGenerator.Generate(obj));
