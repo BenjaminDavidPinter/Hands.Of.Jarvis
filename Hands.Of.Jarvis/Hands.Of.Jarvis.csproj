@@ -7,6 +7,8 @@
   <ItemGroup>
     <Folder Include="DAO\" />
     <Folder Include="Attributes\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\SqlGeneration\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.3" />
